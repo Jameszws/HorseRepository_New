@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+请选择发货地址：
+<br>
+
+<div id="cityselect" style="margin-left:150px;"></div>
+
+<br>
+<br>
+<br>
+
+<div id='aa'></div>
+<div id="bb"></div>
+
+<br>
+<br>
+<br>
+
+<div ng-controller="ParentCtrl">
+    
+    {{parentText}}
+
+    <div ng-controller="SelfCtrl">  
+        <input type="button" value="click me" ng-click="click()"/>    
+        <div ng-controller="ChildCtrl">
+            {{childText}}
+        </div>
+
+    </div>    
+</div>  

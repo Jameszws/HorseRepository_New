@@ -1,0 +1,35 @@
+
+<div style="margin-top: 50px;">
+	<input type="button" ng-click="showMyInfo()" value="显示我的资料" />
+	
+	<input type="button" ng-click="showStudentInfo()" value="显示所有学生" />
+	
+	
+	<input type="button" ng-click="GetQQChannelInfo()" value="GetQQChannelInfo" />
+	
+	<input type="button" id="aa" style="width: 100px;height: 30px;border: 1px solid red;" value="点击事件"/>
+</div>
+
+<div ng-show="showCourse">	
+	<p>我的资料：</p>
+	<input ng-model="name"><br>
+	<input ng-model="sex"><br>
+	<input ng-model="age"><br>	
+	<p>我学习的课程：</p>
+	<div ng-repeat=" course in courses">
+		{{course}}
+	</div>
+</div>
+
+<div ng-show="showStudent" style="border: 1px solid red;">	
+	<p>学生信息：</p>
+
+	<div ng-repeat=" student in students" style="width: auto;margin:20px 10px 10px 20px;">
+		<span>姓名：{{student.name}}</span>
+		<span>性别：{{student.sex}}</span>
+		<span>年龄：{{student.age}}</span>
+		<br>
+	</div>	
+</div>
+
+
