@@ -1,7 +1,26 @@
-<div>
-    <button ng-click="GoToIndex()"> 首页 </button>
-    <button ng-click="GoToTest1()"> Test1 </button>
-    <button ng-click="GoToTest2()"> Test2 </button>
-    <button ng-click="GoToStudent()"> 学生信息 </button>
-    <button ng-click="exit()">退出登陆</button>
-</div>
+<ul id="menu">
+	<li id="guide" class="line-trigger">
+		<div class="line-wrap">
+			<div class="line top"></div>
+			<div class="line center"></div>
+			<div class="line bottom"></div>
+		</div>
+	</li>
+	<li id="logo" class="hidden-xs">
+		<a href="../#/index">
+			<img src="../src/images/logo.png"/>
+		</a>
+		<span id="system_title">物料管理平台</span>
+	</li>
+	<li class="pull-right dropdown" >
+		<ul class="hi-menu" data-toggle="dropdown">			
+			<li>	
+				<img src="../src/images/avatar.jpg" class="set_img"> 
+			</li>		
+		</ul>
+		<ul class="dropdown-menu header-loginperson header-login" aria-labelledby="dLabel" >			
+			<p ng-click="logout()">注销</p>			
+		</ul>
+	</li>
+	
+</ul>

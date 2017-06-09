@@ -1,0 +1,1 @@
+define(["baseController","zPageView","datepicker","virtualKey","securitycode"],function(e,t,o,n,i){e.register.controller("test_Ctrl2",["$scope","$rootScope","$location",function(e,o,n){(new t).extend({onShow:function(){o.navTitle="需求管理",e.text="text page"}})}])});

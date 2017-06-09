@@ -1,0 +1,1 @@
+define(["baseController","zPageView"],function(e,o){e.register.controller("index_Ctrl",["$rootScope","$scope","$location","ENV",function(e,n,t,r){(new o).extend({onShow:function(){e.navTitle="首页",Horse.zLocalStorage.set("234",{qa:"234"}),Horse.zLocalStorage.get("234")}})}])});

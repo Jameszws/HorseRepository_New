@@ -1,30 +1,46 @@
-<style>
-	.showVirturalKey {
-	    position: fixed;	    	    
-	    bottom: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 200px;
-	    z-index: 2 !important;
-	    display: block;
-	}
-</style>
-
-<br/>
-<input id="testdp" datepicker readonly="readonly" />
-
-<br>
-<br>
-<br>
-<div id="dd" class="">
-	
+<div id="toolbar">
+	<form class="form-inline ">
+		<div class="searchDiv">                  
+			<div class="form-group">
+				<label for="search_order">数据源类型：</label>
+				<input type="text" name="" class="form-control" ng-model="text" placeholder="数据源类型" />
+			</div>
+		</div>          
+	</form>	  
 </div>
+<div id="iframe_home" class="iframe cur">
+	<div id="main">		
+		<div class="table-responsive">
+			<table class="table table-striped table table-hover table-bordered table-condensed">
+				<thead class="bg_head">                   
+					<tr>
+						<th>数据源类型</th><th>数据源名称</th><th>数据源实体名称</th><th>产品线</th><th>数据源文件</th><th>操作</th>
+					</tr>                 
+				</thead>
+				<tbody>
+					<tr>
+						<td>静态数据</td>
+						<td>酒店Id检查列表sdfasdfasdfasf</td>
+						<td>root.item</td>
+						<td>国内酒店</td>
+						<td>jieguo.xml</td>
+						<td>
+							<div class="form-inline">									
+								<button type="button" class="b btn btn-info " data-toggle="modal" onclick="">
+									<span class="glyphicon glyphicon-pencil" onclick=""></span>编辑
+								</button> 
+								<button type="button" class="b btn btn-warning" data-toggle="modal" onclick="">
+									<span class="glyphicon glyphicon-pencil" onclick=""></span>配置常用字段
+								</button>   
+								<button type="button" class="b btn btn-primary " data-toggle="modal" onclick="">
+									<span class="glyphicon glyphicon-pencil" ></span>配置接口参数
+								</button>									
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-
-<br>
-<br>
-<br>
-
-<div id="vk" class="showVirturalKey">
-	
 </div>

@@ -1,0 +1,1 @@
+define(["angular"],function(r){var e=r.module("myapp.controller",["myapp.service","ngCookies"]);return e.config(["$controllerProvider","$compileProvider","$filterProvider","$provide",function(r,i,o,t){e.register={controller:r.register,directive:i.directive,filter:o.register}}]),e});

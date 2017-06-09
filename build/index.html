@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>物料管理平台</title>
+		<base href="MyAppProject_V2.0/">
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+		<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+		<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+		<meta name="baseUrl" content="">
+		<meta content="no-cache" http-equiv="pragma">
+		<meta content="0" http-equiv="expires">				
+		<link href="../js/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">						
+		<link href="../css/index.css" rel="stylesheet">
+		<script data-main="../js/main" src="../js/libs/require.js"></script>
+	</head>
+
+	<body>
+		<header id="header" ng-include="'../view/common/header.html'"></header>
+		<section id="main">
+			<!-- 左侧导航区 -->
+			<aside id="sidebar" ng-include="'../view/common/sidebar.html'"></aside>
+			<!-- 右侧内容区域 -->
+			<section id="content">
+				<div class="content_tab">
+					<div class="tab_left">
+						<a class="waves-effect waves-light" href="javascript:;"><i class="zmdi zmdi-chevron-left"></i></a>
+					</div>
+					<div class="tab_right">
+						<a class="waves-effect waves-light" href="javascript:;"><i class="zmdi zmdi-chevron-right"></i></a>
+					</div>
+					<ul id="tabs" class="tabs">
+						<li id="tab_home" data-index="home" data-closeable="false" class="cur">
+							<a class="waves-effect waves-light" ng-bind="navTitle"></a>
+						</li>						
+					</ul>
+				</div>
+
+				<!-- 内容开始 -->
+				<div class="content_main" ui-view>
+					
+				</div>
+			</section>
+		</section>
+		<footer id="footer"></footer>
+	</body>
+
+</html>

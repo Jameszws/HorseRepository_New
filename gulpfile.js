@@ -25,20 +25,20 @@ var host={
 
 //压缩 Horse框架 css
 gulp.task('minify_horse_css', function() {
-	return gulp.src(host.srcDir+'js/Horse/**/*.css') //压缩的文件    	
+	return gulp.src(host.srcDir+'js/horse/**/*.css') //压缩的文件    	
 		.pipe(minifycss()) //执行压缩
 		//.pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
-		.pipe(gulp.dest(host.buildDir+'js/Horse/')); //输出文件夹
+		.pipe(gulp.dest(host.buildDir+'js/horse/')); //输出文件夹
 	//.pipe(concat('horse.css'))    //合并所有horse ui css到 horse.css
-	//.pipe(gulp.dest(host.buildDir+'js/Horse/'));   //输出文件夹 
+	//.pipe(gulp.dest(host.buildDir+'js/horse/'));   //输出文件夹 
 });
 
 //压缩 Horse框架  js
 gulp.task('minify_horse_js', function() {
-	return gulp.src(host.srcDir+'js/Horse/**/*.js')
+	return gulp.src(host.srcDir+'js/horse/**/*.js')
 		.pipe(uglify()) //压缩
 		//.pipe(rename({suffix: '.min'}))   //rename压缩后的文件名        
-		.pipe(gulp.dest(host.buildDir+'js/Horse/')); //输出
+		.pipe(gulp.dest(host.buildDir+'js/horse/')); //输出
 	//.pipe(concat('horse.js'))    //合并所有js到 horse.js
 	//.pipe(gulp.dest(host.buildDir+'js/Horse/'))    //输出 horse.js到文件夹
 });
@@ -55,15 +55,15 @@ gulp.task('horse_html', function() {
 		minifyJS: true, //true:压缩html中的javascript代码
 		minifyCSS: true //true:压缩html中的css代码
 	};
-	gulp.src([host.srcDir+'js/Horse/**/*.html'])
+	gulp.src([host.srcDir+'js/horse/**/*.html'])
 		.pipe(htmlmin(options))
-		.pipe(gulp.dest(host.buildDir+'js/Horse/'));
+		.pipe(gulp.dest(host.buildDir+'js/horse/'));
 });
 
 //image传递
 gulp.task('horse_image', function () {
-    gulp.src(host.srcDir+'js/Horse/**/*.{png,jpg,gif,ico}')        
-        .pipe(gulp.dest(host.buildDir+'js/Horse/'));
+    gulp.src(host.srcDir+'js/horse/**/*.{png,jpg,gif,ico}')
+        .pipe(gulp.dest(host.buildDir+'js/horse/'));
 });
 
 /*********************************** Horse框架  end *************************************/
@@ -100,7 +100,7 @@ gulp.task('minifycss', function() {
 
 //压缩  js （不含Horse框架）
 gulp.task('minifyjs', function() {
-	return gulp.src([host.srcDir+'js/**/*.js', '!'+host.srcDir+'js/Horse/**/*.*', '!'+host.srcDir+'js/libs/**/*.*'])
+	return gulp.src([host.srcDir+'js/**/*.js', '!'+host.srcDir+'js/horse/**/*.*', '!'+host.srcDir+'js/libs/**/*.*'])
 		.pipe(uglify()) //压缩
 		//.pipe(rename({suffix: '.min'}))   //rename压缩后的文件名        
 		.pipe(gulp.dest(host.buildDir+'js/')) //输出
@@ -116,8 +116,14 @@ gulp.task('libs', function() {
 		//.pipe(gulp.dest(host.buildDir+'js/Horse/'))    //输出 horse.js到文件夹
 });
 
+//image传递
+gulp.task('image', function () {
+    gulp.src(host.srcDir+'images/**/*.{png,jpg,gif,ico}')
+        .pipe(gulp.dest(host.buildDir+'images/'));
+});
+
 gulp.task('watch-js-change', function() {
-	return watch(['js/**/*.js', '!'+host.srcDir+'js/Horse/**/*.*', '!'+host.srcDir+'js/libs/**/*.*'], function() {
+	return watch(['js/**/*.js', '!'+host.srcDir+'js/horse/**/*.*', '!'+host.srcDir+'js/libs/**/*.*'], function() {
 		gulp.start("minifyjs");
 	});
 });
@@ -127,11 +133,11 @@ gulp.task('clean', function(cb) {
 	gutil.log(colors.blue("清空文件夹动作开始……………………BEGIN"));
 	return del([
 		host.buildDir+'css/',
-		host.buildDir+'js/1Controllers',
-		host.buildDir+'js/2Services',
-		host.buildDir+'js/3Routes',
-		host.buildDir+'js/4BaseModules',
-		host.buildDir+'js/Util',
+		host.buildDir+'js/controllers',
+		host.buildDir+'js/services',
+		host.buildDir+'js/routes',
+		host.buildDir+'js/base',
+		host.buildDir+'js/util',
 		host.buildDir+'view/',
 		host.buildDir+'index.html'
 	], cb);
@@ -156,7 +162,7 @@ gulp.task('clean_all', function(cb) {
 
 gulp.task("build_all", ["clean_all"], function() {
 	gutil.log(colors.blue("清空文件夹动作完成……………………END"));
-	gulp.start('minifycss', 'minifyjs', 'libs', 'html','minify_horse_js', 'minify_horse_css', 'horse_html', 'horse_image','watch-js-change');
+	gulp.start('minifycss', 'minifyjs', 'libs', 'html','image','minify_horse_js', 'minify_horse_css', 'horse_html', 'horse_image','watch-js-change');
 });
 
 /*

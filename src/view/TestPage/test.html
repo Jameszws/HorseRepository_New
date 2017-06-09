@@ -1,31 +1,39 @@
 <br>
 <br>
 <br>
-请选择发货地址：
-<br>
 
-<div id="cityselect" style="margin-left:150px;"></div>
-
-<br>
-<br>
-<br>
-
-<div id='aa'></div>
-<div id="bb"></div>
-
-<br>
-<br>
-<br>
-
-<div ng-controller="ParentCtrl">
-    
+<div ng-controller="ParentCtrl">    
     {{parentText}}
-
-    <div ng-controller="SelfCtrl">  
+    <div ng-controller="SelfCtrl">        
         <input type="button" value="click me" ng-click="click()"/>    
         <div ng-controller="ChildCtrl">
             {{childText}}
         </div>
-
-    </div>    
+    </div>
 </div>  
+
+<br>
+<br>
+<br>
+
+<div ng-controller="myCtrl">
+    <p>Selected: {{person.selected.name}}</p>
+    <form class="form-horizontal">
+        <fieldset>            
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Grouped</label>
+                <div class="col-sm-6">
+                <ui-select ng-model="person.selected" theme="bootstrap">
+                    <ui-select-match placeholder="Select or search a person in the list...">
+                        {{$select.selected.name}}
+                    </ui-select-match>
+                    <ui-select-choices group-by="'country'" repeat="item in people">
+                        <span  ng-bind-html="item.name"></span>
+                        <small ng-bind-html="item.email"></small>
+                    </ui-select-choices>
+                </ui-select>
+                </div>
+            </div>   
+        </fieldset>
+    </form>
+</div>

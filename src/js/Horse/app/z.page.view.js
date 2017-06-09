@@ -1,6 +1,9 @@
 define([], function() {
-	var zPageView = {
-		
+	var zPageView=function(){
+
+	};
+	zPageView.prototype = {		
+		constructor:zPageView,
 		pageid:0,
 		
 		init: function(params) {			

@@ -4,26 +4,30 @@
 define([],function(){
      var basePageOp={
         initEvent: function($rootScope,$location) {
-            $rootScope.GoToIndex=function(){
+            $rootScope.goToIndex=function(){
+                $rootScope.navTitle="首页";
                 $location.path("/index");					
             };
             
-            $rootScope.GoToTest1 = function() {					
+            $rootScope.goToTest1 = function() {
+                $rootScope.navTitle="数据源配置";
                 $location.path("/test");
             };
 
-            $rootScope.GoToTest2 = function() {
+            $rootScope.goToTest2 = function() {
+                $rootScope.navTitle="需求管理";
                 $location.path("/test2/3");
             };
             
-            $rootScope.GoToStudent=function(){
+            $rootScope.goToStudent=function(){
+                $rootScope.navTitle="模块配置";
                 $location.path("/student");
             };
             
-            $rootScope.exit=function(){
-                $rootScope.UserInfo = null;					
+            $rootScope.logout=function(){
+                $rootScope.UserInfo = null;
                 Horse.zCookieStorage.delCookie("UserInfo");
-                window.location.href="../#/login";
+                $location.path("/login");
             };
         }
     };

@@ -1,0 +1,1 @@
+define(["angular"],function(e){return e.module("myapp.route",["ui.router","myapp.service","myapp.controller"])});

@@ -10,47 +10,55 @@ var config = {
 
 	requireConfigInit: function() {
 		require.config({
-			baseUrl: "../js",
+			baseUrl: "../src/js/",
 			paths: {
 				"text":"libs/require-text",
-				"jquery": "libs/jquery203",
-				//"zepto": "libs/zepto.min",
+				"jquery": "libs/jquery-v2.0.3",
+
+				"bootstrapjs":"libs/bootstrap/dist/js/bootstrap.min",
 
 				/* angular begin */
+				/*
 				"angular": "../../node_modules/angular/angular.min",
 				"angular-ui-router": "../../node_modules/angular-ui-router/release/angular-ui-router.min",
 				"angular-sanitize": "../../node_modules/angular-sanitize/angular-sanitize.min",
-				"angular-cookies": "../../node_modules/angular-cookies/angular-cookies.min",				
+				"angular-cookies": "../../node_modules/angular-cookies/angular-cookies.min",
+				*/
+				"angular": "libs/angular/angular.min",
+				"angular-ui-router": "libs/angular-ui-router/release/angular-ui-router.min",
+				"angular-sanitize": "libs/angular-sanitize/angular-sanitize.min",
+				"angular-cookies": "libs/angular-cookies/angular-cookies.min",
+				"angular-ui-select":"libs/angular-ui-select/dist/select.min",
 				/* angular end */
 				
-				"baseRoute": "4Base/baseRoute",
-				"routeMonitor": "4Base/routeMonitor",
-				"baseService": "4Base/baseService",
-				"authService":"4Base/authService",	//基础服务——auth服务
-				"restservice":"4Base/restService",	//基础服务——rest服务
-				"baseController": "4Base/baseController",
+				"baseRoute": "base/baseRoute",
+				"routeMonitor": "base/routeMonitor",
+				"baseService": "base/baseService",
+				"authService":"base/authService",	//基础服务——auth服务
+				"restservice":"base/restService",	//基础服务——rest服务
+				"baseController": "base/baseController",
 
 				/* ctrl 区域 begin */
-				"basePageView":"1Controllers/common/basePageView",				
-				"studentCtrl":"1Controllers/studentCtrl",
-				"loginCtrl":"1Controllers/loginCtrl",
-				"testCtrl":"1Controllers/testCtrl",
-				"testCtrl2":"1Controllers/testCtrl2",
-				"indexCtrl":"1Controllers/indexCtrl",
+				"basePageView":"controllers/common/basePageView",
+				"studentCtrl":"controllers/studentCtrl",
+				"loginCtrl":"controllers/loginCtrl",
+				"testCtrl":"controllers/testCtrl",
+				"testCtrl2":"controllers/testCtrl2",
+				"indexCtrl":"controllers/indexCtrl",
 				/* ctrl 区域 end */
 
 				/* service 区域 begin */
-				"commonService": "2Services/common/commonService",
-				"studentService": "2Services/StudentService",
-				"constant":"2Services/constant",	//基础服务——常量api
+				"commonService": "services/common/commonService",
+				"studentService": "services/StudentService",
+				"constant":"services/constant",	//基础服务——常量api
 				/* service 区域 end */
 
-				"appRoute": "3Routes/appRoute",
+				"appRoute": "routes/appRoute",
 
 				"basePageOp":"common/basePageOp",
 
-				"util": "Util/util",
-				"validate": "Util/validate",
+				"util": "horse/util/util",
+				"validate": "horse/util/validate",
 				
 				/***************(Horse配置 begin)********************/
 				
@@ -93,11 +101,19 @@ var config = {
 					deps: ["angular"],
 					exports: 'angular-sanitize'
 				},
+				'angular-ui-select': {
+					deps: ["angular"],
+					exports: 'angular-ui-select'
+				},
+				'bootstrapjs':{
+					deps: ["jquery"],
+					exports: 'bootstrapjs'
+				},
 				//*
 				'angular-cookies': {
 					deps: ["angular"],
 					exports: 'angular-cookies'
-				},
+				},				
 				//*/
 				'zUiPopuplayerCommon':{
 					deps: [						
@@ -128,6 +144,11 @@ var config = {
 					deps:[
 						"css!../js/Horse/ui/z.ui.securitycode/css/securitycode.new"
 					]
+				},
+				'angular-ui-select':{
+					deps:[
+						"css!../js/libs/angular-ui-select/dist/select.min"
+					]
 				}
 			}
 		});
@@ -135,12 +156,12 @@ var config = {
 
 	loadMustRequireModule: function() {
 		require(["jquery", 
-			'angular', 'angular-sanitize', 'angular-cookies','angular-ui-router',
+			'angular', 'angular-sanitize', 'angular-cookies','angular-ui-router','angular-ui-select','bootstrapjs',
 			'baseRoute', 'baseService', 'baseController',
 			'appRoute', 'routeMonitor',
 			'constant','authService','restservice','Horse', 'zPageView'
 		], function($, angular) {
-			$(function() {
+			$(function() {				
 				angular.bootstrap(document, ["myapp.route"]);
 			});
 		});
